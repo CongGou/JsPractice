@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            position: relative;
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+        #wrap>p{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url("images/1.png") no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<script src="animation.js"></script>
+<script>
+    let oWrap = document.getElementById('wrap'),
+        p = document.getElementsByTagName('p'),
+        len = 100,
+        arr = [];
+    for (let i=0; i<len; i++){
+        arr.push(i)
+    }
+    arr.sort((a,b)=>Math.random()-0.5);
+    let j = 0;
+    function fly() {
+        let value = arr[j];
+        let left = (value % 10) * 50;
+        let top = Math.floor(value / 10) * 50;
+
+        oWrap.innerHTML += `<p></p>`;
+        p[j].style.backgroundPosition=`${-left}px ${-top}px`;
+        animation(p[j],{
+            data:{
+                top,
+                left,
+            },
+            speedOpt:{
+                ease:"Quad",
+                speed: 2
+            }
+        },100,()=>{
+            j++;
+            fly()
+        })
+    }
+    fly();
+</script>
+</html>

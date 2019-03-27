@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>星星点评</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .title,.list,.list ul li{
+            float:left;
+        }
+        #wrap{
+            width: 400px;
+            height: 60px;
+            margin: 100px auto;
+        }
+        .title{
+            display: inline-block;
+            height: 60px;
+            font-size: 14px;
+            line-height: 60px;
+        }
+        .list{
+            width: 150px;
+            height: 30px;
+        }
+        .list ul{
+            width: 150px;
+            height: 30px;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+        .list ul li{
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background-image: url("images/star.png") ;
+        }
+        .list ul li.light{
+            background-position: 1px;
+        }
+        .text{
+            display: inline-block;
+            height: 60px;
+            width: 130px;
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="title">
+            <span>星级评分:</span>
+        </div>
+        <div class="list">
+            <ul class="list_1">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="text">
+            <p>提示：请认真打分</p>
+        </div>
+    </div>
+    <script>
+        let aList = document.querySelectorAll(".list li"),
+            aUl = document.querySelector(".list_1"),
+            oTxt = document.querySelector(".text"),
+            len = aList.length,
+            index = -1
+            arrTxt = [
+                "提示：请认真打分",
+                "尼玛",
+                "真垃圾",
+                "弱鸡",
+                "你大爷的",
+                "你真的弱鸡"
+
+            ]
+        ;
+        for (let i = 0; i < len; i++){
+            //鼠标移入事件
+            aList[i].onmouseenter = function(){
+
+                for (let j = 0; j < len; j++){
+                    aList[j].className = j<=i?"light":"";
+                    // if(j <= i){
+                    //     aList[j].className = "light";
+                    // }else{
+                    //     aList[j].className = "";
+                    // }
+                };
+                //文本提示事件
+                oTxt.innerHTML = arrTxt[i+1];
+                //点击事件
+                aList[i].onclick = function (){
+                    index = i;
+                };
+            };
+        };
+        //ul移除事件
+        aUl.onmouseleave = function () {
+            for (let i = 0; i < len; i++){
+                aList[i].className = i<=index?"light":"";
+            };
+            oTxt.innerHTML = arrTxt[index+1];
+        };
+    </script>
+</body>
+</html>

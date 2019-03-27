@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+  	    #wrap div{
+       		width: 100px;
+       		height: 100px;
+       		background: red;
+       		float:left;
+       		margin: 5px;
+        }
+    </style>
+   
+</head>
+<body>
+    <button id="btn">生成</button>
+    <div id="wrap"></div>
+  
+    <script>
+		let oWrap=document.getElementById("wrap"),
+			oBtn=document.getElementById("btn");
+			oBtn.onclick = function(){
+			for(let i=0; i<8; i++){
+				oWrap.innerHTML += "<div></div>";
+			}
+			
+		}
+
+
+    </script>
+
+</body>
+</html>

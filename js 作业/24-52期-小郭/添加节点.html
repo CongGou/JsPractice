@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>添加节点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            border: 0;
+        }
+
+        .clearfix:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        #con {
+            width: 704px;
+            height: 500px;
+            margin: auto;
+            padding: 75px;
+            background-color: #eee;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 20px #ccc;
+        }
+
+        #con .menu {
+            width: 340px;
+            height: 90px;
+            padding: 5px;
+            background-color: #fff;
+
+            cursor: pointer;
+        }
+
+        #con .menu li {
+            float: left;
+            margin: 5px;
+        }
+
+        #con .menu li:hover {
+            color: #f33;
+        }
+
+        #con .menu li:first-child {
+            color: rgb(255, 178, 34);
+        }
+
+        #con .box {
+            float: left;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 20px #ccc;
+            overflow: hidden;
+
+        }
+
+        #con .left {
+            width: 330px;
+            height: 380px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        #con .left li {
+            float: left;
+            width: 66px;
+            height: 21px;
+            margin: 5px 5px;
+            padding: 2px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #con .left i {
+            width: 26px;
+            height: 22px;
+            margin-left: 5px;
+            padding: 2px 2px 2px 5px;
+            border-left: 1px solid #ddd;
+            font-style: normal;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #con .left i:hover {
+            color: #f33;
+        }
+
+        #con .right {
+            float: left;
+            width: 310px;
+            height: 460px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 20px #ccc;
+            padding: 20px;
+            background-color: rgb(0, 0, 0, .3);
+        }
+
+        #con .right li {
+            float: left;
+            width: 66px;
+            height: 21px;
+            margin: 5px 5px;
+            padding: 2px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con">
+        <div class="box">
+            <ul class="menu clearfix">
+                <li>热门城市：</li>
+                <li class="city">北京</li>
+                <li class="city">伦敦</li>
+                <li class="city">纽约</li>
+                <li class="city">悉尼</li>
+                <li class="city">东京</li>
+            </ul>
+            <ul class="left clearfix"></ul>
+        </div>
+        <ul class="right clearfix"></ul>
+    </div>
+    <script>
+        let aSelect = document.getElementsByClassName("city"),
+            oLeft = document.getElementsByClassName("left")[0],
+            oRight = document.getElementsByClassName("right")[0],
+            len = aSelect.length
+
+        for (let i = 0; i < len; i++) {
+            let index = true //true =>可以点击  false=>点击无效
+            aSelect[i].onclick = function () {
+                if (!index) return //false 那就什么都不干
+                let box = aSelect[i].cloneNode(true)
+                let box1 = aSelect[i].cloneNode(true)
+                let closeBtn = document.createElement("span")
+                closeBtn.innerHTML = " X"
+
+                // X 的 点击节点的操作
+                closeBtn.onclick = function () {
+                    oLeft.removeChild(box)
+                    oRight.removeChild(box1)
+                    index = !index
+                }
+                box.appendChild(closeBtn)
+
+                oLeft.appendChild(box)
+                oRight.appendChild(box1)
+                index = !index
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

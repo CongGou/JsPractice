@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .title{
+            width: 100%;
+            height: 60px;
+            background: #EE6264;
+            color: #fff;
+            line-height: 60px;
+            font-size: 18px;
+        }
+        #list{
+            position: absolute;
+            width: 360px;
+            height: 500px;
+            padding: 0 20px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            box-shadow: 0 0 5px #ccc;
+            user-select: none;
+        }
+        #list ul{
+            width: 100%;
+            height: 100%;
+        }
+        #list ul li{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            color: #ccc;
+            font-size: 14px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .btn{
+            position: absolute;
+        }
+        .drag1{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            cursor: row-resize;
+        }
+        .drag2{
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            cursor: col-resize;
+        }
+        .drag3{
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            cursor: row-resize;
+        }
+        .drag4{
+            bottom: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            cursor: col-resize;
+        }
+        .drag5{
+            bottom: 0;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            cursor: sw-resize;
+        }
+        .drag6{
+            bottom: 0;
+            right: 0;
+            width: 5px;
+            height: 5px;
+            cursor: se-resize;
+        }
+        .drag7{
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 5px;
+            cursor: ne-resize;
+        }
+        .drag8{
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            cursor: nw-resize;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="title">拖动元素边缘改变盒子大小</div>
+    </div>
+    <box id="list">
+       <div>
+           <ul>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+               <li>NBA综合｜哈登缺席火箭仍擒勇士 詹姆斯空砍27分湖人负鹈鹕</li>
+           </ul>
+       </div>
+        <div class="btn drag1"></div>
+        <div class="btn drag2"></div>
+        <div class="btn drag3"></div>
+        <div class="btn drag4"></div>
+        <div class="btn drag5"></div>
+        <div class="btn drag6"></div>
+        <div class="btn drag7"></div>
+        <div class="btn drag8"></div>
+    </box>
+
+    <script>
+        let List = document.getElementById('list');
+        let aDrag = [...document.querySelectorAll(".btn")];
+        list.onmousedown = function(e){
+            e = e || window.event; //兼容ie
+            let valueTop = e.clientY;   //top方向的初始值
+            let valueLeft = e.clientX;  //left方向的初始值
+            let ListTop = list.getBoundingClientRect().top; //初始的盒子的位置
+            let ListLeft = list.getBoundingClientRect().left; //初始的盒子的位置
+
+
+            document.onmousemove = function (e) {
+                e = e || window.event; //兼容ie
+                let changeTop = e.clientY - valueTop;
+                let changeLeft = e.clientX - valueLeft;
+                list.style.top = ListTop + changeTop + "px";
+                list.style.left = ListLeft + changeLeft + "px";
+
+            };
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        };
+        aDrag.forEach((e,index)=>{
+            e.onmousedown = function (e) {
+                e = e || window.event; //兼容ie
+                e.stopImmediatePropagation?e.stopImmediatePropagation():e.cancleBubble = true;
+                let dragX = e.clientX;
+                let dragY = e.clientY;
+
+                let dragW = List.getBoundingClientRect().width;//初始的盒子的宽度
+                let dragH = List.getBoundingClientRect().height;//初始的盒子的gao度
+                let dragT = List.offsetTop;//top方向的初始值
+                let dragL = List.offsetLeft;//left方向的初始值
+                document.onmousemove = function(e){
+                    e = e || window.event; //兼容ie
+                    let changeX = e.clientX - dragX;
+                    let changeY = e.clientY - dragY;
+
+                    if(index === 0){
+                        let height = dragH - changeY;
+                        let top = dragT + changeY;
+                        List.style.height = height + "px";
+                        List.style.top = top+ "px";
+                    }
+                    if(index === 1){
+                        let width = dragW + changeX;
+                        List.style.width = width + "px";
+                    }
+                    if(index === 2){
+                        let height = dragH + changeY;
+                        List.style.height = height + "px";
+                    }
+                    if(index === 3){
+                        let width = dragW - changeX;
+                        let left = dragL + changeX;
+                        List.style.width = width + "px";
+                        List.style.left = left+ "px";
+                    }
+                    if (index === 4){
+                        let height = dragH + changeY;
+                        List.style.height = height + "px";
+
+                        // let changeX = e.clientX - dragX;
+                        let width = dragW - changeX;
+                        let left = dragL + changeX;
+                        List.style.width = width + "px";
+                        List.style.left = left+ "px";
+                    }
+                    if(index === 5){
+                        let width = dragW + changeX;
+                        let height = dragH + changeY;
+                        List.style.width = width + "px";
+                        List.style.height = height + "px";
+                    }
+                    if (index === 6){
+                        let height = dragH - changeY;
+                        let top = dragT + changeY;
+                        List.style.height = height + "px";
+                        List.style.top = top+ "px";
+
+                        // let changeX = e.clientX - dragX;
+                        let width = dragW + changeX;
+                        List.style.width = width + "px";
+
+                    }
+                    if (index === 7){
+                        let height = dragH - changeY;
+                        let top = dragT + changeY;
+                        List.style.height = height + "px";
+                        List.style.top = top+ "px";
+                        let width = dragW - changeX;
+                        let left = dragL + changeX;
+                        List.style.width = width + "px";
+                        List.style.left = left+ "px";
+
+                    }
+
+                }
+            }
+        });
+        document.onmouseup = function () {
+            this.onmousemove = null;
+        }
+    </script>
+</body>
+</html>

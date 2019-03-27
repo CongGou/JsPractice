@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="uft-8">
+	<title>选项卡</title>
+	<style>
+		body,div{margin:0;padding:0;}
+		ul,li{list-style:none;padding:0;margin:0;padding-inline-start:0;}
+		a{text-decoration:none;}
+		#wrap{
+			position: relative;
+			width: 600px;
+			height: 342px;
+			background: #ccc;
+			margin: 100px auto;
+		}
+		.img{
+			position: relative;
+			width: 600px;
+			height: 298px;
+		}
+		.img a img{
+			width: 600px;
+			height: 298px;
+			position: absolute;
+			display: none;
+		}
+		.img .show{
+			display: block;
+		}
+		.list{
+			
+			text-align: center;
+			line-height: 44px;
+			width: 600px;
+			height: 44px;
+			font-size: 12px;
+			color: #fff;
+			background: #ccc;
+			
+		}
+		.list ul{
+			width: 600;
+			height: 44px;
+		}
+		.list ul li{
+			user-select: none;
+			cursor: pointer;
+			float: left;
+			width: 120px;
+			height: 44px;
+			background: #000;
+		}
+		.list .active{
+			color: #D8AF58;
+			background: #56575D;
+		}
+		#arrow{
+			user-select: none;
+			cursor: pointer;
+			opacity: .3;
+		}
+		#arrow .left{
+			background-color: #000;
+			left: 0;
+			position: absolute;
+			width: 40px;
+			height: 60px;
+			color: #fff;
+			font-size: 16px;
+			text-align: center;
+			line-height: 60px;
+			top: 149px;
+		}
+		
+		#arrow .right{
+			background-color: #000;
+			right: 0;
+			position: absolute;
+			width: 40px;
+			height: 60px;
+			color: #fff;
+			font-size: 16px;
+			text-align: center;
+			line-height: 60px;
+			top: 149px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div>
+			<ul class="img">
+				<li>
+					<a href=""><img  class="show" src="images/x1.jpg"></a>
+				</li>
+				<li>
+					<a href=""><img src="images/x2.jpg"></a>
+				</li>
+				<li>
+					<a href=""><img src="images/x3.jpg"></a>
+				</li>
+				<li>
+					<a href=""><img src="images/x4.jpg"></a>
+				</li>
+				<li>
+					<a href=""><img src="images/x5.jpg"></a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="list">
+			<ul>
+				<li class="active">开黑吗</li>
+				<li>我猴子很溜</li>
+				<li>打不过就跑</li>
+				<li>不用管我</li>
+				<li>投降就是了</li>
+			</ul>
+		</div>
+		<div id="arrow">
+			<div class="left"> < </div>
+			<div class="right"> > </div>
+		<div>
+	</div>
+	<script>
+	
+		let oImages = document.querySelectorAll(".img img"),
+			oList = document.querySelectorAll(".list li"),
+			lBtn = document.querySelector(".left"),
+			rBtn = document.querySelector(".right"),
+			len = oList.length,
+			index = 0;
+			
+		function change(x){
+			oList[index].className = '';
+			oImages[index].className = '';
+			index = x;
+			oList[index].className = 'active';
+			oImages[index].className = 'show';
+		}	
+			
+			
+		
+		for(let i=0;i<len;i++){
+			oList[i].onclick = function(){
+				if(index===i)return;
+				change(i)
+// 				if(index===i)return;
+// 				oList[index].className = '';
+// 				oImages[index].className = '';
+// 				index=i;
+// 				oList[index].className = 'active';
+// 				oImages[index].className = 'show';
+			};
+		};
+		lBtn.onclick = function(){
+				let x = index;
+					x--;
+					if(x < 0){
+						x = len-1;
+					}
+				change(x);
+				// oList[index].className = '';
+// 				oImages[index].className = '';
+// 				index--;
+				// if(index < 0){
+// 					index = len-1;
+// 				}
+				// oList[index].className = 'active';
+// 				oImages[index].className = 'show';
+		};
+		rBtn.onclick = function(){
+				let x = index;
+					x++;
+					if(x >= len){
+						x = 0;
+					}
+				change(x);
+		
+		
+				
+			// 	oList[index].className = '';
+// 				oImages[index].className = '';
+// 				index++;
+// 				if(index >= len){
+// 					index = 0;
+// 				}
+// 				oList[index].className = 'active';
+// 				oImages[index].className = 'show';
+		};
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+</body>
+</html>

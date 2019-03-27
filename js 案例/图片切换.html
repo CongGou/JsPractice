@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="uft-8">
+	<title>图片切换</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			position: relative;
+			width: 500px;
+			height: 300px;
+			margin: 20px auto;
+			
+		}
+		#wrap img{
+			position: absolute;
+			width: 500px;
+			height: 300px;
+			display: none;
+		}
+		#wrap .on{
+			display:block;
+		}
+
+		.direction{
+			position: absolute;
+			width: 20px;
+			height: 40px;
+			background: rgba(0,0,0,.5);
+			z-index: 100;
+			top: 130px;
+			color: #fff;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+		.right{
+			right: 0;
+		}
+		#btn{
+			width: 100%;
+			height: 30px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		 #btn p{
+			display: inline-block;
+			width: 80px;
+			height: 30px;
+			cursor: pointer;
+			background-color: #ccc;
+			line-height: 30px;
+		}
+		 #btn p.active{
+			background-color: #f60;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<img class="on" src="images/a1.png">
+		<img src="images/a2.png">
+		<img src="images/a3.png">
+		<div class="direction left"><</div>
+		<div class="direction right">></div>
+	</div>
+	<div id="btn">
+		<p class="active">单边模式</p>
+		<p>循环模式</p>
+	</div>
+	<script>
+		let aMages = document.querySelectorAll("#wrap img"),
+			aP = document.querySelectorAll("#btn p"),
+			rBtn = document.querySelector(".right"),
+			lBtn = document.querySelector(".left"),
+			index = 0,
+			bool = true;  
+			
+			// console.log(aP)
+			rBtn.onclick = function(){
+				aMages[index].className= ""
+				index++;
+				// if(bool){
+// 					if(index>aMages.length-1){
+// 					index=aMages.length-1;
+// 					}
+// 				}else{
+// 					if(index>aMages.length-1){
+// 					index=0;
+// 					}
+// 				}
+				// if(index>aMages.length-1){
+// 					index=aMages.length-1;
+// 				}else{
+// 					index=0;
+// 				}
+				if(index>aMages.length-1){
+					index = bool?index=aMages.length-1:index=0;
+				}    //三目写法
+				
+				aMages[index].className= "on";
+			
+			}
+			lBtn.onclick = function(){
+				aMages[index].className= ""
+				index--;
+				// if(bool){
+				// 	if(index<0){
+				// 	index=0;
+				// 	}
+				// }else{
+				// 	if(index<0){
+				// 	index=aMages.length-1;
+				// 	}
+				// }
+				if(index<0){
+					index = bool?index=0:index=index=aMages.length-1;;
+				} 
+				aMages[index].className= "on";
+			
+			}
+			aP[0].onclick = function(){
+				aP[1].className = ""
+				aP[0].className = "active";
+				bool = true;
+				
+			}
+			aP[1].onclick = function(){
+				aP[1].className = "active";
+				aP[0].className = "";
+				bool = false;
+			}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>小球运动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        #wrap{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+    <script>
+        let Wrap = document.getElementById('wrap');
+
+        let speedX = 3;
+        let speedY = 5;
+
+        let leftX = 0;
+        let topY = 0;
+
+        let maxX = document.documentElement.clientWidth - 50;
+        let maxY = document.documentElement.clientHeight - 50;
+
+        window.onresize = function(){
+            maxX = document.documentElement.clientWidth - 50;
+            maxY = document.documentElement.clientHeight - 50;
+        }
+        function run() {
+            leftX += speedX;
+            topY += speedY;
+
+            leftX = Math.min(maxX,leftX);
+            leftX = Math.max(0,leftX);
+
+            topY = Math.min(maxY,topY);
+            topY = Math.max(0,topY);
+
+            Wrap.style.top = topY +"px";
+            Wrap.style.left = leftX +"px";
+            if (leftX === 0 || leftX ===maxX) {
+                speedX = -speedX
+            }
+            if (topY === 0 || topY ===maxY) {
+                speedY = -speedY
+            }
+
+            requestAnimationFrame(run)
+
+        }
+        run()
+    </script>
+</body>
+</html>

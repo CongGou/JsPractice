@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            display: inline-block;
+        }
+        #wrap{
+            margin: 100px auto;
+            width: 402px;
+            height: 516px;
+        }
+        #list-items{
+            width: 400px;
+            height: 391px;
+            padding: 22px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .content{
+            width: 100%;
+            height: 65px;
+            border-bottom: 1px solid #ccc;
+            line-height: 65px;
+        }
+        .Hook{
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background: url("images1/ck.png");
+            vertical-align: middle;
+            background-size: 26px 26px;
+            background-position: -2px -4px;
+        }
+        .Hook-btm{
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            background: url("images1/ck.png");
+            vertical-align: middle;
+            background-size: 26px 26px;
+            background-position: -2px -4px;
+        }
+        .show{
+            background: url("images1/cked.jpg");
+            background-size: 26px 26px;
+            background-position: -2px -4px;
+        }
+        .text{
+            width: 200px;
+            line-height: 65px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .all-election{
+            height: 85px;
+            line-height: 85px;
+            border-bottom: 1px solid #ccc;
+        }
+        .text-btm{
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="list-items">
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+            <div class="content">
+                <span class="Hook"></span><span class="text">选择 美丽的朱雀</span>
+            </div>
+        </div>
+        <div class="all-election">
+            <span class="Hook-btm"></span><span class="text-btm">全选</span>
+            <span class="Hook-btm"></span><span class="text-btm">全不选</span>
+            <span class="Hook-btm"></span><span class="text-btm">反选</span>
+        </div>
+    </div>
+    <script>
+        let aHook = document.querySelectorAll(".Hook"),
+            Hookbtm = document.querySelectorAll(".Hook-btm"),
+            aText = document.querySelectorAll(".text"),
+            aTextbtm = document.querySelectorAll(".text-btm"),
+            len = aHook.length,
+            num = 0;
+
+            for(let i=0; i<len; i++){
+                aHook[i].onOff = true;      //true代表可被打开
+                aHook[i].onclick = function(){
+                    this.classList.toggle("show");
+                    this.onOff ? num++ : num--;     //判断当前是true还是false
+                    this.onOff = !this.onOff;   //取反，每次点击改变开关状态
+                    change();
+                };
+            }
+            aTextbtm[0].onclick = function(){
+                Hookbtm[0].classList.add("show");
+                Hookbtm[1].classList.remove("show");
+                Hookbtm[2].classList.remove("show");
+                num = len;
+                for (let i=0; i<len; i++) {
+                    aHook[i].classList.toggle("show");
+                    aHook[i].onOff = false;
+                }
+            };
+
+            aTextbtm[1].onclick = function(){
+                Hookbtm[0].classList.remove("show");
+                Hookbtm[1].classList.add("show");
+                Hookbtm[2].classList.remove("show");
+                num = 0;
+                for (let i=0; i<len; i++) {
+                    aHook[i].classList.toggle("show");
+                    aHook[i].onOff = true;
+                }
+            };
+            aTextbtm[2].onclick = function(){
+                Hookbtm[0].classList.remove("show");
+                Hookbtm[1].classList.remove("show");
+                Hookbtm[2].classList.add("show");
+                for (let i=0; i<len; i++) {
+                    aHook[i].classList.toggle("show");
+                    aHook[i].onOff ? num++ : num--;
+                    aHook[i].onOff = !aHook[i].onOff;
+                }
+                change();
+            };
+            function change(){
+                if(num === len){
+                    Hookbtm[0].classList.add("show");
+                    Hookbtm[1].classList.remove("show");
+                }else if(num === 0){
+                    Hookbtm[1].classList.add("show");
+                    Hookbtm[0].classList.remove("show");
+                }else{
+                    Hookbtm[0].classList.remove("show");
+                    Hookbtm[1].classList.remove("show");
+                }
+            }
+
+
+
+    </script>
+</body>
+</html>

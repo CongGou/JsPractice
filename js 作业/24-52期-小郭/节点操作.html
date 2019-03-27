@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        div{border: 0;}
+        #wrap{
+            position: relative;
+            width: 858px;
+            height: 648px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background: #EEEEEE;
+        }
+        .box{
+            width: 355px;
+            height: 500px;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .left-box{
+            margin: 75px 0 0 75px;
+        }
+        .right-box{
+            position: absolute;
+            top: 75px;
+            right: 75px;
+            background: #AAAAAA;
+        }
+        .city{
+            width: 100%;
+            height: 60px;
+            margin-left: 10px;
+            line-height: 60px;
+            cursor: pointer;
+        }
+        .city span{
+            margin-left: 5px;
+        }
+        .city .hot{
+            color: #EF6B34;
+        }
+        .city-con{
+            width: 335px;
+            height: 300px;
+            margin: 50px auto;
+        }
+        .list{
+            width: 335px;
+            height: 300px;
+        }
+        .list li{
+            float: left;
+            width: 70px;
+            height: 25px;
+            margin-right: 10px;
+            margin-top: 10px;
+            border-radius: 20px;
+            background: #ccc;
+            color: #fff;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box left-box">
+            <div class="city">
+                <span class="hot">热门城市:</span>
+                <span class="city-name">北京</span>
+                <span class="city-name">上海</span>
+                <span class="city-name">广州</span>
+                <span class="city-name">深圳</span>
+                <span class="city-name">佛山</span>
+            </div>
+            <div class="city-con">
+                <ul class="list">
+                    <!--<li>北京 | <span>X</span></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="box right-box">
+            <div class="city-con">
+                <ul class="list">
+                    <!--<li>北京 | <span>X</span></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        let aCity = document.getElementsByClassName("city-name"),
+            leftList = document.querySelectorAll('.left-box .list')[0],
+            rightList = document.querySelectorAll('.right-box .list')[0],
+            len = aCity.length;
+            // console.log(aCity,leftList,rightList,len);
+        for (let i=0; i<len; i++){
+            let bool=false;
+            aCity[i].onclick = function(){
+                if (bool) {
+                    alert("每个城市点一次就够了哟")
+                    return
+                }
+                let value = aCity[i].innerHTML;
+                let leftLi = document.createElement("li");
+                let span = document.createElement("span");
+                let rightLi = document.createElement("li");
+
+                leftLi.innerHTML = value + " | ";
+                rightLi.innerHTML = value;
+                span.innerHTML = "X";
+                leftLi.appendChild(span);
+                span.onclick = function () {
+                    bool=false;
+                    leftList.removeChild(leftLi);
+                    rightList.removeChild(rightLi);
+                };
+
+                leftList.appendChild(leftLi);
+                rightList.appendChild(rightLi);
+                bool = true;
+
+            }
+        }
+    </script>
+</body>
+</html>

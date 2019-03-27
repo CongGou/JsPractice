@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            position: relative;
+            margin: 100px auto;
+            width: 400px;
+            height: 400px;
+            border-radius: 50px;
+        }
+        #img img{
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50px;
+            transform: rotate(1.2deg);
+        }
+        .arrow{
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            height: 150px;
+            border: 1px solid #000;
+            transform-origin: bottom;
+        }
+        #hour{
+            height: 120px;
+            border: 3px solid red;
+            left: 198px;
+            top: 75px;
+        }
+        #minute{
+            border: 2px solid green;
+            left: 199px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="img">
+            <img src="images/01.png" alt="">
+        </div>
+        <div id="hour" class="arrow"></div>
+        <div id="minute" class="arrow"></div>
+        <div id="second" class="arrow"></div>
+    </div>
+    <script>
+        let Hour = document.getElementById('hour');
+        let Min = document.getElementById('minute');
+        let Second = document.getElementById('second');
+
+        function run() {
+            let data = new Date();
+            let hh = data.getHours();
+            let mm = data.getMinutes();
+            let ss = data.getSeconds();
+            Hour.style.transform = `rotate(${hh * 30 + mm * 30 / 60}deg)`;
+            Min.style.transform = `rotate(${mm * 6 + ss * 6 / 60}deg)`;
+            Second.style.transform = `rotate(${ss * 6}deg)`;
+        }
+        setInterval(run,1000);
+    </script>
+</body>
+</html>

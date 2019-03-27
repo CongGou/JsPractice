@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        input,button{
+            border: 0;
+        }
+        #wrap{
+            width: 400px;
+            height: 280px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+        .head{
+            position: relative;
+            width: 380px;
+            height: 38px;
+            padding: 11px 10px;
+            background: #EEEEEE;
+            margin-bottom: 40px;
+        }
+        .Head-portrait,img{
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .Add-to{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: 10px;
+            top: 15px;
+            border-radius: 50%;
+            background: #666;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+        }
+        .Input-box{
+            position: absolute;
+            display: none;
+            width: 254px;
+            height: 34px;
+            top: 13px;
+            left: 58px;
+        }
+        .Input-box input{
+            outline: none;
+            width: 202px;
+            height: 33px;
+            border: 1px solid #A5A4A5;
+        }
+        .Input-box button{
+            position: absolute;
+            outline: none;
+            width: 48px;
+            height: 35px;
+            border: 1px solid #A5A4A5;
+        }
+        #content{
+            width: 380px;
+            height: 180px;
+            border-top: 1px dashed #A5A4A5;
+            padding: 0 10px;
+            overflow: hidden;
+        }
+        .news{
+            width: 100%;
+            height: 100%;
+        }
+        .news li{
+            width: 100%;
+            height: 50px;
+            border-bottom: 1px dashed #A5A4A5;
+            line-height: 50px;
+        }
+        .news li img{
+            vertical-align: middle;
+        }
+        .news p{
+            display: inline-block;
+            height: 50px;
+            margin-left: 10px;
+            vertical-align: middle;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="head">
+            <div class="Head-portrait">
+                <img src="images/01.jpg">
+            </div>
+            <div class="Add-to"><span>+</span></div>
+            <div class="Input-box">
+                <input type="text" placeholder="请输入内容">
+                <button>发表</button>
+            </div>
+        </div>
+        <div id="content">
+            <ul class="news"></ul>
+        </div>
+    </div>
+    <script>
+        let aImg = document.getElementsByTagName("img")[0],
+            oAdd = document.getElementsByClassName("Add-to")[0],
+            inputBox = document.getElementsByClassName("Input-box")[0],
+            Input = document.getElementsByTagName("input")[0],
+            oBtn = document.getElementsByTagName("button")[0],
+            aUl = document.getElementsByTagName("ul")[0],
+            num = 1,
+            onOff = true;
+
+        aImg.onclick = function(){
+            if(onOff){
+                aImg.src = "images/02.jpg"
+            }else{
+                aImg.src = "images/01.jpg"
+            }
+            onOff = !onOff;
+        };
+        oAdd.onclick = function(){
+            // if(onOff){
+            //     inputBox.style.display = "block";
+            // }else{
+            //     inputBox.style.display = "none";
+            // }
+            inputBox.style.display = onOff?"block":"none";
+            onOff = !onOff;
+        };
+
+        oBtn.onclick = function(){
+            let val = Input.value;
+            if(val === "") return;
+            aUl.innerHTML += `<li><img src="${aImg.src}"><p>${val}</p></li>`;
+            Input.value = "";
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

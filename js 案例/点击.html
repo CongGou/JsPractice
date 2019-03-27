@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+  	    #wrap.box{
+       		width: 200px;
+       		height: 200px;
+       		background: red;
+        }
+
+    </style>
+   
+</head>
+<body>
+   <div id="wrap"></div>
+    <script>
+
+		let oWrap = document.getElementById('wrap')
+		let onOff = true
+			oWrap.className = "box"
+			// oWrap.onclick = function(){
+// 				if(onOff){
+// 					oWrap.style.backgroundColor="#ccc"
+// 					oWrap.innerHTML="123";
+// 					onOff = false
+// 				}else{
+// 				oWrap.style.backgroundColor=""
+// 				oWrap.innerHTML="";
+// 				onOff = true
+// 				}
+// 			}
+			oWrap.onclick = function(){
+				oWrap.style.backgroundColor = onOff?"#ccc":"";
+				oWrap.innerHTML = onOff?"123":"";
+				onOff = !onOff;
+			}
+		//三目写法
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

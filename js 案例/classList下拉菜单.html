@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,ul,li,p{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #wrap{
+            width: 200px;
+            height: 360px;
+            margin: 10px auto;
+        }
+        #wrap div{
+            background: #F2F8F8;
+        }
+        #wrap div p{
+            width: 100%;
+            height: 39px;
+            border-bottom: 1px solid #fff;
+            background: pink;
+            color: #fff;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .list{
+            display: none;
+        }
+        .list.show{
+            display: block;
+        }
+        .list li{
+            width: 100%;
+            height: 29px;
+            border-bottom: 1px dashed pink;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .list li:hover {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>
+            <p>同学</p>
+            <ul class="list">
+                <li>蟑螂恶霸</li>
+                <li>井盖</li>
+                <li>事多精</li>
+            </ul>
+        </div>
+        <div>
+            <p>老师</p>
+            <ul class="list">
+                <li>画大饼</li>
+                <li>死基佬</li>
+                <li>老巫婆</li>
+            </ul>
+        </div>
+        <div>
+            <p>兄dei</p>
+            <ul class="list">
+                <li>黑鬼</li>
+                <li>郝备胎</li>
+                <li>大胖</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function(){
+            let aP = document.getElementsByTagName("p"),
+                aList = document.getElementsByClassName("list"),
+                len = aP.length;
+            for (let i=0; i<len; i++){
+                aP[i].onclick = function(){
+                    aList[i].classList.toggle("show")
+                    //toggle是classlist的属性（切换）
+                }
+            }
+
+        })();
+    </script>
+</body>
+</html>
